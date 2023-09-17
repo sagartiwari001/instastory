@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatss-app story</title>
+</head>
+<style>
+    *
+    {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+    }
+    html
+    {
+        height: 100%;
+        width: 100%;
+        background: #9e5316;
+
+    }
+    body 
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #card
+    {
+        height: 500px;
+        width: 350px;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid rgb(2, 2, 26);
+        position: relative;
+        margin-top: 5%;
+        overflow: hidden;
+
+    }
+    #story
+    {
+        height: 100px;
+        width: 100%;
+        border-bottom: 1px solid ;
+        padding: 10px;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        cursor: pointer;
+    }
+    #story::-webkit-scrollbar
+    {
+        display: none;
+    }
+    .st
+    {
+        height: 80px;
+        width: 80px;
+        border: 2px solid rgba(230, 26, 26, 0.795);
+        border-radius: 50%;
+        display: inline-block;
+        margin-right:5px ;
+    }
+    .st img
+    {
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+    #full-screen
+    {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        display: none;
+        border-radius: 10px;
+    }
+</style>
+<body>
+    <div id="card">
+
+        <div id="full-screen">
+
+        </div>
+        <div id="story">
+
+        </div>
+
+    </div>
+    
+</body>
+<script>
+    var arr =[
+        {dp:"../notes/-5352898315047521157_121.jpg",
+         story:"../notes/-5352898315047521157_121.jpg"},
+        {dp:"../notes/-5352898315047521158_121.jpg",
+        story:"../notes/-5352898315047521158_121.jpg"},
+        {dp:"../notes/-5352898315047521159_121.jpg",
+        story:"../notes/-5352898315047521159_121.jpg"},
+        {dp:"../notes/-5352898315047521163_121.jpg",
+        story:"../notes/-5352898315047521163_121.jpg"},
+        {dp:"../notes/IMG_20230813_002656_709.jpg",
+        story:"../notes/IMG_20230813_002656_709.jpg"},
+    ]
+    var story = document.querySelector("#story")
+    var clutter =""
+    arr.forEach(function (elem,idx){
+
+        // console.log(elem ,idx);
+
+        //idx = uniq id of ev erery img 
+
+        clutter +=`<div class="st">
+                <img id="${idx}"src="${elem.dp}" >
+            </div>`
+    })
+    console.log(clutter)
+
+    story.innerHTML=clutter
+    story.addEventListener("click",function (dets){
+        // console.log(arr[dets.target.id].story)
+        document.querySelector("#full-screen").style.display="block"
+        document.querySelector("#full-screen").style.backgroundImage=`url(${arr[dets.target.id].story})`
+        
+        setTimeout(function(){
+            document.querySelector("#full-screen").style.display="none"
+
+        },3000)
+    });
+
+</script>
+</html>
